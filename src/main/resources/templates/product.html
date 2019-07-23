@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détail Produit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+</head>
+<body>
+	<div class="container">
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Détail du Produit</h1>
+            
+            <form class="form-horizontal" th:action="@{/cart/{id}(id=${product.id})}" method="post" enctype="multipart/form-data" >
+            	<fieldset>
+            		<div class="form-group">
+	                    <label class="col-lg-2 control-label">Nom du produit:</label>
+	                    <div class="col-lg-8">
+	                    	<input type="text" class="form-control" disabled="disabled" 
+	                    		th:value="${product.name}"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+	                    <label class="col-lg-2 control-label">Description du produit:</label>
+	                    <div class="col-lg-8">
+	                    	<input type="text" class="form-control" disabled="disabled" 
+	                    		th:value="${product.description}"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+	                    <label class="col-lg-2 control-label">Prix($CA):</label>
+	                    <div class="col-lg-8">
+	                    	<input type="text" class="form-control" disabled="disabled" 
+	                    		th:value="${product.price}"/>
+	                    </div>
+	                </div>
+            		<div class="form-group">
+	                    <div class="col-lg-6">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-primary">Ajouter au Panier</button>
+								</span>
+							</div>
+	                    </div>
+                	</div>
+            	</fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+	</div>
+
+</body>
+</html>
