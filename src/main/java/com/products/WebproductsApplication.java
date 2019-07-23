@@ -6,6 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.products.model.Product;
+import com.products.repository.ProductRepository;
+
 @SpringBootApplication
 public class WebproductsApplication implements CommandLineRunner{
 

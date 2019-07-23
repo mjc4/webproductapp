@@ -1,13 +1,15 @@
-package com.products;
+package com.products.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.products.model.Customer;
+import com.products.model.Product;
+import com.products.repository.ProductRepository;
 
 @Controller
 public class ProductController {
@@ -15,19 +17,19 @@ public class ProductController {
 	@Autowired
 	ProductRepository repository;
 	
-	@RequestMapping(value="/products",method=RequestMethod.GET)
+	@GetMapping(value="/products")
 	public String productsList(Model model) {
 		model.addAttribute("products", repository.findAll());
 		return "products";
 	}
 	
-	@RequestMapping("/product/{id}")
+	@GetMapping(value="/product/{id}")
 	public String getProduct(@PathVariable Long id, Model model) {
 		model.addAttribute("product", repository.findById(id).orElse(null));
 		return "product";
 	}
 	
-	@RequestMapping(value="/cart/{id}", method=RequestMethod.POST)
+	@PostMapping(value="/cart/{id}")
 	public String addToCart(@PathVariable Long id, Model model) {
     	
 		//get the current Customer instance
@@ -51,7 +53,7 @@ public class ProductController {
         
     }
 	
-	@RequestMapping(value="/cart",method=RequestMethod.GET)
+	@GetMapping(value="/cart")
 	public String cart(Model model) {
 		//get the current Customer instance
 		Customer instance = Customer.getInstance();

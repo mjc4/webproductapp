@@ -1,16 +1,9 @@
 package com.products.model;
 
 import java.util.ArrayList;
-import com.products.Product;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 public class Customer {
-	
-	@Id
-	@GeneratedValue
-	private long id;
 	
 	// static variable single_instance of type Customer 
     private static Customer singleInstance = null; 
@@ -31,10 +24,6 @@ public class Customer {
 		}
 		
 		return singleInstance;
-	}
-	
-	public long getId() {
-		return id;
 	}
 	
 	public ArrayList<Product> getCart() {
